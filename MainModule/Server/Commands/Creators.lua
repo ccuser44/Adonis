@@ -9,17 +9,6 @@ return function(Vargs, env)
 	if env then setfenv(1, env) end
 
 	return {
-		EraseUserData = {
-			Prefix = Settings.Prefix;
-			Commands = {"eraseuserdata"};
-			Args = {""};
-			Description = "This completely removes data about users specified. This only prompts a window for the removal. You have to enter the UserIds to the window";
-			AdminLevel = "Creators";
-			Function = function(plr: Player, args: {string}, data: {any})
-				
-			end
-		};
-
 		DirectBan = {
 			Prefix = Settings.Prefix;
 			Commands = {"directban"};
