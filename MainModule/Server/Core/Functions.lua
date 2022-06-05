@@ -586,10 +586,6 @@ return function(Vargs, GetEnv)
 			return filteredList
 		end;
 
-		RemoveUserDataFromUserId = function(userId)
-			
-		end;
-
 		GetRandom = function(pLen)
 			--local str = ""
 			--for i=1,math.random(5,10) do str=str..string.char(math.random(33,90)) end
