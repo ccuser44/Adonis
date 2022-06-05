@@ -302,6 +302,7 @@ local descs = {};			--// Contains settings descriptions
 	settings.LockMessage = "Not Whitelisted"	-- Message shown to people when they are kicked while the game is :slocked
 	settings.SystemTitle = "System Message"		-- Title to display in :sm and :bc
 
+	settings.OldLogsEnabled = true 		-- If :OldLogs are saved, ie. if commandlogs are saved to oldlogs after game shutdown. Set to false if you wan't to disable.
 	settings.MaxLogs = 5000			-- Maximum logs to save before deleting the oldest
 	settings.Notification = true	-- Whether or not to show the "You're an admin" and "Updated" notifications
 	settings.SongHint = true		-- Display a hint with the current song name and ID when a song is played via :music
