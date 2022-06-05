@@ -101,6 +101,10 @@ return function(Vargs, GetEnv)
 		SaveCommandLogs = function()
 			warn("Saving command logs...")
 
+			if Settings.OldLogsEnabled ~= true then
+				warn("Skipped saving commands logs due to Settings.OldLogsEnabled not being on.")
+			end
+
 			local logsToSave = Logs.Commands --{}
 			local maxLogs = Logs.OldCommandLogsLimit
 			--local numLogsToSave = 200; --// Save the last X logs from this server
