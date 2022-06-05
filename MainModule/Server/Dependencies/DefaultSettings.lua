@@ -302,12 +302,14 @@ local descs = {};			--// Contains settings descriptions
 	settings.LockMessage = "Not Whitelisted"	-- Message shown to people when they are kicked while the game is :slocked
 	settings.SystemTitle = "System Message"		-- Title to display in :sm and :bc
 
-	settings.OldLogsEnabled = true 		-- If :OldLogs are saved, ie. if commandlogs are saved to oldlogs after game shutdown. Set to false if you wan't to disable.
+	settings.OldLogsEnabled = true 		-- If :OldLogs are saved, ie. if commandlogs are saved to oldlogs after game shutdown. Set to false if you wan't to disable
 	settings.MaxLogs = 5000			-- Maximum logs to save before deleting the oldest
 	settings.Notification = true	-- Whether or not to show the "You're an admin" and "Updated" notifications
 	settings.SongHint = true		-- Display a hint with the current song name and ID when a song is played via :music
 	settings.TopBarShift = false	-- By default hints and notifs will appear from the top edge of the window, this is acheived by offsetting them by -35 into the transparent region where roblox buttons menu/chat/leaderstat buttons are. Set this to true if you don't want hints/notifs to appear in that region.
+
 	settings.Messages = {}			-- A list of notification messages to show HeadAdmins and above on join
+
 	settings.AutoClean = false		-- Will auto clean workspace of things like hats and tools
 	settings.AutoCleanDelay = 60	-- Time between auto cleans
 	settings.AutoBackup = false 	-- (not recommended) Run a map backup command when the server starts, this is mostly useless as clients cannot modify the server. To restore the map run :restoremap
@@ -358,10 +360,6 @@ local descs = {};			--// Contains settings descriptions
 	descs.DefaultTheme = [[ Theme to be used as a replacement for "Default". The new replacement theme can still use "Default" as its Base_Theme however any other theme which references "Default" as its redirects to this theme. ]]
 
 	descs.Ranks = [[ All admin permission level ranks; ]];
-	descs.Moderators = [[ Mods; Format: {"Username"; "Username:UserId"; UserId; "Group:GroupId:GroupRank"; "Group:GroupId"; "Item:ItemID";} ]]
-	descs.Admins = [[ Admins; Format: {"Username"; "Username:UserId"; UserId; "Group:GroupId:GroupRank"; "Group:GroupId"; "Item:ItemID";} ]]
-	descs.HeadAdmins = [[ Head Admins; Format: {"Username"; "Username:UserId"; UserId; "Group:GroupId:GroupRank"; "Group:GroupId"; "Item:ItemID";} ]]
-	descs.Creators = [[ Anyone to be identified as a place owner; Format: {"Username"; "Username:UserId"; UserId; "Group:GroupId:GroupRank"; "Group:GroupId"; "Item:ItemID";} ]]
 
 	descs.Permissions = [[ Command permissions; Format: {"Command:NewLevel";} ]]
 	descs.Aliases = [[ Command aliases; Format: {[":alias <arg1> <arg2> ..."] = ":command <arg1> <arg2> ..."} ]]
@@ -374,7 +372,6 @@ local descs = {};			--// Contains settings descriptions
 	descs.MusicList = [[ List of songs to appear in the script; Format: {{Name = "somesong",ID = 1234567},{Name = "anotherone",ID = 1243562}} ]]
 	descs.CapeList = [[ List of capes; Format: {{Name = "somecape",Material = "Fabric",Color = "Bright yellow",ID = 12345567,Reflectance = 1},{etc more stuff here}} ]]
 	descs.InsertList = [[ List of models to appear in the script; Format: {{Name = "somemodel",ID = 1234567},{Name = "anotherone",ID = 1243562}} ]]
-	descs.CustomRanks = [[ List of custom AdminLevel ranks			  Format: {RankName = {"Username"; "Username:UserId"; UserId; "Group:GroupId:GroupRank"; "Group:GroupId"; "Item:ItemID";};} ]]
 
 	descs.OnStartup = [[ List of commands ran at server start								Format: {":notif TestNotif"} ]]
 	descs.OnJoin = [[ List of commands ran as player on join (ignores adminlevel)		Format: {":cmds"} ]]
@@ -408,15 +405,16 @@ local descs = {};			--// Contains settings descriptions
 	descs.CommandFeedback = [[ Should players be notified when commands with non-obvious effects are run on them? ]]
 	descs.CrossServerCommands = [[ Are commands which affect more than one server enabled? ]]
 	descs.ChatCommands = [[ If false you will not be able to run commands via the chat; Instead you MUST use the console or you will be unable to run commands ]]
+	descs.CreatorPowers = [[ When true gives me place owner admin; This is strictly used for debugging; I can't debug without access to the script and specific owner commands ]]
+	descs.CodeExecution = [[ Enables the use of code execution in Adonis; Scripting related and a few other commands require this ]]
 
 	descs.BanMessage = [[ Message shown to banned users ]]
 	descs.LockMessage = [[ Message shown to people when they are kicked while the game is :slocked ]]
 	descs.SystemTitle = [[ Title to display in :sm ]]
 
-	descs.CreatorPowers = [[ When true gives me place owner admin; This is strictly used for debugging; I can't debug without access to the script and specific owner commands ]]
+	descs.OldLogsEnabled = [[ If :OldLogs are saved, ie. if commandlogs are saved to oldlogs after game shutdown. Set to false if you wan't to disable ]]
 	descs.MaxLogs = [[ Maximum logs to save before deleting the oldest; Too high can lag the game ]]
 	descs.Notification = [[ Whether or not to show the "You're an admin" and "Updated" notifications ]]
-	descs.CodeExecution = [[ Enables the use of code execution in Adonis; Scripting related and a few other commands require this ]]
 	descs.SongHint = [[ Display a hint with the current song name and ID when a song is played via :music ]]
 	descs.TopBarShift = [[ By default hints and notifs will appear from the top edge of the window, this is acheived by offsetting them by -35 into the transparent region where roblox buttons menu/chat/leaderstat buttons are. Set this to true if you don't want hints/notifs to appear in that region. ]]
 
@@ -426,19 +424,16 @@ local descs = {};			--// Contains settings descriptions
 	descs.AutoBackup = [[ (not recommended) Run a map backup command when the server starts, this is mostly useless as clients cannot modify the server. To restore the map run :restoremap ]]
 	descs.AutoCleanDelay = [[ Time between auto cleans ]]
 
-	descs.CustomChat = [[ Custom chat ]]
-	descs.PlayerList = [[ Custom playerlist ]]
-
 	descs.Console = [[ Command console ]]
 	descs.Console_AdminsOnly = [[ Makes it so if the console is enabled, only admins will see it ]]
-
-	descs.DonorCommands = [[ Show your support for the script and let donors use commands like !sparkles ]]
-	descs.DonorCapes = [[ Determines if donors have capes ]]
-	descs.LocalCapes = [[ Makes Donor capes local instead of removing them ]]
 
 	descs.HelpSystem = [[ Allows players to call admins for help using !help ]]
 	descs.HelpButton = [[ Shows a little help button in the bottom right corner ]]
 	descs.HelpButtonImage = [[ Change this to change the help button's image ]]
+
+	descs.DonorCommands = [[ Show your support for the script and let donors use commands like !sparkles ]]
+	descs.DonorCapes = [[ Determines if donors have capes ]]
+	descs.LocalCapes = [[ Makes Donor capes local instead of removing them ]]
 
 	descs.Detection = [[ Attempts to detect certain known exploits ]]
 	descs.CheckClients = [[ Checks clients every minute or two to make sure they are still active ]]
@@ -454,7 +449,7 @@ local descs = {};			--// Contains settings descriptions
 	descs.AntiBuildingTools = [[ (Client-Sided) Attempts to detect any HopperBin(s)/Building Tools added to the client ]]
 	descs.AntiClientIdle = [[ (Client-Sided) Kick the player if they are using an anti-idle exploit ]]
 	descs.AntiLeak = [[ (Client-Sided) Attempts to prevent place downloading/saving; Do not use if game saves ]]
-	descs.ProtectHats = [[ Prevents hats from being un-welded from their characters through unnormal means. ]]
+	descs.ProtectHats = [[ Prevents hats from being un-welded from their characters through unnormal means ]]
 
 	order = {
 		"HideScript";
@@ -482,7 +477,6 @@ local descs = {};			--// Contains settings descriptions
 		"MusicList";
 		"CapeList";
 		"InsertList";
-		"CustomRanks";
 		" ";
 		"OnStartup";
 		"OnJoin";
@@ -523,6 +517,7 @@ local descs = {};			--// Contains settings descriptions
 		"LockMessage";
 		"SystemTitle";
 		" ";
+		"OldLogsEnabled";
 		"MaxLogs";
 		"Notification";
 		"SongHint";
@@ -531,9 +526,6 @@ local descs = {};			--// Contains settings descriptions
 		"AutoClean";
 		"AutoCleanDelay";
 		"AutoBackup";
-		" ";
-		"CustomChat";
-		"PlayerList";
 		" ";
 		"Console";
 		"Console_AdminsOnly";
